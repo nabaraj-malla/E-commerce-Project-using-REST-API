@@ -1,3 +1,6 @@
+import { ApplicationError } from "../../error-handler/applicationError.js";
+import UserModel from "../user/user.model.js";
+
 export default class ProductModel {
   constructor(id, name, desc, price, imageURL, category, sizes) {
     this.id = id;
@@ -36,7 +39,45 @@ export default class ProductModel {
         (!category || product.category == category)
       );
     });
+    if (result.length === 0) {
+      throw new ApplicationError("product don't matched", 404);
+    }
     return result;
+  }
+  static rating(userID, productID, rating) {
+    // 1. validating user
+    const user = UserModel.getAll().find((u) => u.id == userID);
+    if (!user) {
+      throw new ApplicationError("user not found", 404);
+    }
+    // 1. validating product
+    const product = products.find((p) => p.id == productID);
+    if (!product) {
+      // return "product not found";
+      throw new ApplicationError("product not found", 400);
+    }
+
+    // 3. check if ratings array exist if not create a new ratings array
+    if (!product.ratings) {
+      product.ratings = new Array();
+      product.ratings.push({ userID: userID, rating: rating });
+    } else {
+      // 4. Check if particular user's rating already available
+      const existingRatingIndex = product.ratings.findIndex(
+        (r) => r.userID == userID
+      );
+
+      // 5. if available update
+      if (existingRatingIndex != -1) {
+        product.ratings[existingRatingIndex] = {
+          userID: userID,
+          rating: rating,
+        };
+      } else {
+        // 6.if no existing rating, then add new rating
+        product.ratings.push({ userID: userID, rating: rating });
+      }
+    }
   }
 }
 

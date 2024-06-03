@@ -1,0 +1,2 @@
+{"level":"info","message":"Mon Jun 03 2024 14:44:08 GMT+0545 (Nepal Time) \n/api/carts?productID=13&quantity=5 - req.body - {}  \nreq.query - {\"productID\":\"13\",\"quantity\":\"5\"} ","service":"request-logging"}
+{"level":"info","message":"Mon Jun 03 2024 14:44:28 GMT+0545 (Nepal Time) \n/api/products/filter?minPrice=1000 - req.body - {}  \nreq.query - {\"minPrice\":\"1000\"} ","service":"request-logging"}

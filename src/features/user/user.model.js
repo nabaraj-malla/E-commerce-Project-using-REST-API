@@ -35,4 +35,11 @@ let users = [
     password: "1seller1",
     type: "seller",
   },
+  {
+    id: 2,
+    name: "user1",
+    email: "user1@test.com",
+    password: "user1#1",
+    type: "customer",
+  },
 ];

@@ -1,0 +1,28 @@
+
+
+ Sat Jun 01 2024 15:54:58 GMT+0545 (Nepal Time) - /api/users/signup - req.body - {"name":"user1","email":"user1@test.com","password":"user1#1","type":"customer"} 
+  req.query - {} 
+ Sat Jun 01 2024 15:55:00 GMT+0545 (Nepal Time) - /api/users/signin - req.body - {"email":"user1@test.com","password":"user1#1"} 
+  req.query - {} 
+ Sat Jun 01 2024 15:57:42 GMT+0545 (Nepal Time) - /api/users/signup - req.body - {"name":"user1","email":"user1@test.com","password":"user1#1","type":"customer"} 
+  req.query - {} 
+ Sat Jun 01 2024 15:57:45 GMT+0545 (Nepal Time) - /api/users/signin - req.body - {"email":"user1@test.com","password":"user1#1"} 
+  req.query - {} 
+ Sat Jun 01 2024 15:57:59 GMT+0545 (Nepal Time) - /api/products/rate?userID=2&productID=1&rating=5 - req.body - {} 
+  req.query - {"userID":"2","productID":"1","rating":"5"} 
+ Sat Jun 01 2024 16:02:33 GMT+0545 (Nepal Time) - /api/users/signup - req.body - {"name":"user1","email":"user1@test.com","password":"user1#1","type":"customer"} 
+  req.query - {} 
+ Sat Jun 01 2024 16:02:36 GMT+0545 (Nepal Time) - /signin - req.body - {"email":"user1@test.com","password":"user1#1"} 
+  req.query - {} 
+ Sat Jun 01 2024 16:04:41 GMT+0545 (Nepal Time) - /api/users/signup - req.body - {"name":"user1","email":"user1@test.com","password":"user1#1","type":"customer"} 
+  req.query - {} 
+ Sat Jun 01 2024 16:04:55 GMT+0545 (Nepal Time) - /signin - req.body - {"email":"user1@test.com","password":"user1#1"} 
+  req.query - {} 
+ Sat Jun 01 2024 16:11:36 GMT+0545 (Nepal Time) - /api/users/signup - req.body - {"name":"user1","email":"user1@test.com","password":"user1#1","type":"customer"} 
+  req.query - {} 
+ Sat Jun 01 2024 16:12:11 GMT+0545 (Nepal Time) - /api/products/rate?userID=2&productID=1&rating=5 - req.body - {} 
+  req.query - {"userID":"2","productID":"1","rating":"5"} 
+ Sat Jun 01 2024 16:14:02 GMT+0545 (Nepal Time) - /api/users/signup - req.body - {"name":"user1","email":"user1@test.com","password":"user1#1","type":"customer"} 
+  req.query - {} 
+ Sat Jun 01 2024 16:14:21 GMT+0545 (Nepal Time) - /api/products/rate?userID=2&productID=1&rating=5 - req.body - {} 
+  req.query - {"userID":"2","productID":"1","rating":"5"} 

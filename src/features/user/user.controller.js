@@ -15,7 +15,7 @@ export default class UserController {
       return res.status(400).send("Invalid credentials");
     } else {
       const token = jwt.sign(
-        { id: result.id, email: result.email },
+        { userID: result.id, email: result.email },
         "KdE9vVDUQzaBqmM",
         {
           expiresIn: "1h",

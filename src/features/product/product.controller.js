@@ -30,14 +30,22 @@ export default class ProductController {
   }
 
   filterProducts(req, res) {
-    const minPrice = req.query.minPrice;
-    const maxPrice = req.query.maxPrice;
+    const minPrice = parseFloat(req.query.minPrice);
+    const maxPrice = parseFloat(req.query.maxPrice);
     const category = req.query.category;
-    const result = ProductModel.filter(minPrice, maxPrice, category);
-    if (result) {
-      return res.status(200).send(result);
-    } else {
-      return res.status(404).send("product not matched");
-    }
+    let result = ProductModel.filter(minPrice, maxPrice, category);
+    return res.status(200).send(result);
+  }
+
+  rateProduct(req, res) {
+    const userID = req.query.userID;
+    const productID = req.query.productID;
+    const rating = req.query.rating;
+    // try {
+    ProductModel.rating(userID, productID, rating);
+    // } catch (err) {
+    // return res.status(400).send(err.message);
+    // }
+    return res.status(200).send("rating added");
   }
 }
