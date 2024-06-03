@@ -1,4 +1,5 @@
-API for Ecommerce Project using Nodejs and Express framework 
+**API for Ecommerce Project using Nodejs and Express framework **
+**Features **
 * CRUD including rate and filter operation for product model.
 * User signup and signin using JWT authentication.
 * CRUD operation for CART model.
