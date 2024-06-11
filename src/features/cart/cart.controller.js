@@ -1,45 +1,58 @@
-import CartItemModel from "./cart.model.js";
+import CartRepository from "./cart.repository.js";
 
 export default class CartItemsController {
-  add(req, res) {
-    const { productID, quantity } = req.query;
-    const userID = req.userID;
-    console.log("add method", productID, userID, quantity);
-    const result = CartItemModel.add(productID, userID, quantity);
-    if (result.success) {
-      return res.status(201).send(result);
-    } else {
-      return res.status(401).send(result);
-    }
-    // return res.status(201).send({ msg: "cartItem added", product });
+  constructor() {
+    this.cartRepository = new CartRepository();
   }
 
-  get(req, res) {
-    const userID = req.userID;
-    const result = CartItemModel.get(userID);
-    return res.status(200).send(result);
-  }
-
-  update(req, res) {
-    const { productID, quantity } = req.query;
-    const userID = req.userID;
-    const result = CartItemModel.update(productID, userID, quantity);
-    if (result.success) {
-      return res.status(200).send(result);
-    } else {
-      return res.status(400).send(result);
+  async add(req, res) {
+    try {
+      const { productID, quantity } = req.body;
+      const userID = req.userID;
+      await this.cartRepository.add(productID, userID, quantity);
+      return res.status(201).send("item added");
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError("Error in adding item to cart", 500);
     }
   }
 
-  delete(req, res) {
-    const userID = req.userID;
-    const { cartItemID } = req.query;
-    console.log(cartItemID);
-    const error = CartItemModel.delete(cartItemID, userID);
-    if (error) {
-      return res.status(404).send(error);
-    } else {
-      return res.status(200).send("Cart item removed successfully");
+  async get(req, res) {
+    try {
+      const userID = req.userID;
+      const results = await this.cartRepository.get(userID);
+      return res.status(200).send(results);
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError("Error in getting items from cart", 500);
     }
   }
+
+  async delete(req, res) {
+    try {
+      const userID = req.userID;
+      const { cartItemID } = req.body;
+      await this.cartRepository.delete(userID, cartItemID);
+      return res.status(200).send("item deleted");
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError("Error in deleting items from cart", 500);
+    }
+  }
+
+  // async update(req, res) {
+  //   try {
+  //     const { cartItemID, newQuantity } = req.body;
+  //     const userID = req.userID;
+  //     await this.cartRepository.updateQunatity(
+  //       userID,
+  //       cartItemID,
+  //       parseFloat(newQuantity)
+  //     );
+  //     return res.status(200).send("quantity updated successfully");
+  //   } catch (error) {
+  //     console.log(error);
+  //     throw new ApplicationError("Error in updating cartItem quantity", 500);
+  //   }
+  // }
 }

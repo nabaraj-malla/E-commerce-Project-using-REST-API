@@ -7,16 +7,20 @@ const router = express.Router();
 
 const productController = new ProductController();
 
-router.get("/", productController.getAllProducts);
-router.post(
-  "/",
-  upload.single("imageURL"),
-  validateProduct,
-  productController.addProduct
-);
-router.get("/:id", productController.getOneProduct);
-//localhost:9003/api/products/filter?minPrice=100&maxPrice=500&category=Category1
-router.post("/filter", productController.filterProducts);
-router.post("/rate", productController.rateProduct);
+router.get("/", (req, res) => {
+  productController.getAllProducts(req, res);
+});
+router.post("/add", upload.single("imageURL"), validateProduct, (req, res) => {
+  productController.addProduct(req, res);
+});
+router.get("/:id", (req, res) => {
+  productController.getOneProduct(req, res);
+});
+router.post("/filter", (req, res) => {
+  productController.filterProducts(req, res);
+});
+router.post("/rate", (req, res) => {
+  productController.rateProduct(req, res);
+});
 
 export default router;

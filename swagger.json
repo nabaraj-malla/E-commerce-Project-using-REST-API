@@ -20,26 +20,45 @@
     }
   },
   "paths": {
-    "/api/products": {
-      "get": {
-        "tags": ["Products"],
-        "summary": "Get products",
-        "description": "User will receive all the products",
-        "security": [
-          {
-            "JWT": {}
+    "/api/users/signup": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "user registration",
+        "description": "Register as new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
-        ],
+        },
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "resource created"
           },
-          "401": {
-            "description": "Unauthorized"
+          "400": {
+            "description": "Invalid credentials"
           }
         }
       }
     },
+
     "/api/users/signin": {
       "post": {
         "tags": ["Users"],
@@ -68,6 +87,186 @@
           },
           "400": {
             "description": "Invalid credentials"
+          }
+        }
+      }
+    },
+    "/api/products/add": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Add a product",
+        "description": "User will add a product",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "sizes": {
+                    "type": "string"
+                  },
+                  "imageURL": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": ["name", "price", "sizes", "imageURL"]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/products": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get products",
+        "description": "User will receive all the products",
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+
+    "/api/products/{id}": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get a product by ID",
+        "description": "User will receive the product",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/products/filter": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Get a product based on filter",
+        "description": "User will receive the filtered products",
+        "parameters": [
+          {
+            "name": "minPrice",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "maxPrice",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/products/rate": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "Rate a product",
+        "description": "User will rate a product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "productID": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "number",
+                    "format": "float"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }

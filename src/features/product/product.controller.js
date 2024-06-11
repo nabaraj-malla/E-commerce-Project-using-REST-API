@@ -1,51 +1,79 @@
+import { ApplicationError } from "../../error-handler/applicationError.js";
 import ProductModel from "./product.model.js";
+import ProductRepository from "./product.repository.js";
 
 export default class ProductController {
-  getAllProducts(req, res) {
-    const products = ProductModel.getAll();
+  constructor() {
+    this.productRepository = new ProductRepository();
+  }
+
+  async getAllProducts(req, res) {
+    const products = await this.productRepository.getAll();
+    console.log(products);
     return res.status(200).send(products);
   }
 
-  addProduct(req, res) {
-    const { name, price, sizes } = req.body;
-    const newProduct = {
-      name: name,
-      price: parseFloat(price),
-      sizes: sizes.split(","),
-      imageURL: req.file.filename,
-    };
-
-    const createdRecord = ProductModel.add(newProduct);
-    res.status(201).send(createdRecord);
-  }
-
-  getOneProduct(req, res) {
-    const id = req.params.id;
-    const product = ProductModel.getOne(id);
-    if (product) {
-      return res.status(200).send(product);
-    } else {
-      return res.status(404).send("id not found");
+  async addProduct(req, res) {
+    try {
+      let { name, price, sizes } = req.body;
+      price = parseFloat(price);
+      const imageURL = req.file.filename;
+      sizes = sizes.split(",");
+      const newProduct = new ProductModel(
+        name,
+        undefined,
+        price,
+        imageURL,
+        undefined,
+        sizes
+      );
+      const result = await this.productRepository.add(newProduct);
+      res.status(201).send(result);
+    } catch (error) {
+      throw new ApplicationError("Invaid credentials", 400);
     }
   }
 
-  filterProducts(req, res) {
-    const minPrice = parseFloat(req.query.minPrice);
-    const maxPrice = parseFloat(req.query.maxPrice);
-    const category = req.query.category;
-    let result = ProductModel.filter(minPrice, maxPrice, category);
-    return res.status(200).send(result);
+  async getOneProduct(req, res) {
+    try {
+      const id = req.params.id;
+      const product = await this.productRepository.get(id);
+      if (product) {
+        return res.status(200).send(product);
+      } else {
+        return res.status(404).send("id not found");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  rateProduct(req, res) {
-    const userID = req.query.userID;
-    const productID = req.query.productID;
-    const rating = req.query.rating;
-    // try {
-    ProductModel.rating(userID, productID, rating);
-    // } catch (err) {
-    // return res.status(400).send(err.message);
-    // }
-    return res.status(200).send("rating added");
+  async filterProducts(req, res) {
+    try {
+      const minPrice = parseFloat(req.query.minPrice);
+      const maxPrice = parseFloat(req.query.maxPrice);
+      const category = req.query.category;
+      let result = await this.productRepository.filter(
+        minPrice,
+        maxPrice,
+        category
+      );
+      return res.status(200).send(result);
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError("No matching product found", 500);
+    }
+  }
+
+  async rateProduct(req, res) {
+    try {
+      const { productID, rating } = req.body;
+      const userID = req.userID;
+      await this.productRepository.rate(userID, productID, rating);
+      return res.status(200).send("rating added");
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError("error in rate product", 400);
+    }
   }
 }

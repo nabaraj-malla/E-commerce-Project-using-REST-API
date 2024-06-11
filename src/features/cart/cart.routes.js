@@ -5,9 +5,17 @@ const cartRouter = express.Router();
 
 const cartItemsController = new CartItemsController();
 
-cartRouter.post("/", cartItemsController.add);
-cartRouter.get("/", cartItemsController.get);
-cartRouter.put("/update", cartItemsController.update);
-cartRouter.delete("/delete", cartItemsController.delete);
+cartRouter.post("/", (req, res) => {
+  cartItemsController.add(req, res);
+});
+cartRouter.get("/", (req, res) => {
+  cartItemsController.get(req, res);
+});
+// cartRouter.put("/update", (req, res) => {
+//   cartItemsController.update(req, res);
+// });
+cartRouter.delete("/delete", (req, res) => {
+  cartItemsController.delete(req, res);
+});
 
 export default cartRouter;

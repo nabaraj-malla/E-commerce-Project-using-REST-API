@@ -1,3 +1,4 @@
+import "./env.js";
 import express, { json } from "express";
 import cors from "cors";
 import swagger from "swagger-ui-express";
@@ -11,20 +12,12 @@ import cartRouter from "./src/features/cart/cart.routes.js";
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 import logError from "./src/middlewares/errorLogger.middleware.js";
 import { ApplicationError } from "./src/error-handler/applicationError.js";
+import { connectToMongoDB } from "./src/config/mongodb.js";
 
 const server = express();
 
 // CORS policy configuration
 server.use(cors());
-// server.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "*");
-//   res.header("Access-Control-Allow-Methods", "*");
-//   if (req.method == "OPTIONS") {
-//     return res.sendStatus(200);
-//   }
-//   next();
-// });
 
 // server.use(express.json());
 server.use(bodyParser.json());
@@ -66,4 +59,5 @@ server.use((req, res) => {
 const PORT = 9003;
 server.listen(PORT, () => {
   console.log(`server is listening at Port no. ${PORT}`);
+  connectToMongoDB();
 });
