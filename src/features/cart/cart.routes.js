@@ -8,7 +8,7 @@ const cartItemsController = new CartItemsController();
 cartRouter.post("/", (req, res) => {
   cartItemsController.add(req, res);
 });
-cartRouter.get("/", (req, res) => {
+cartRouter.get("/cartItems", (req, res) => {
   cartItemsController.get(req, res);
 });
 // cartRouter.put("/update", (req, res) => {

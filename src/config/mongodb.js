@@ -7,8 +7,9 @@ var client;
 export const connectToMongoDB = () => {
   MongoClient.connect(process.env.DB_URL)
     .then((clientInstance) => {
-      client = clientInstance.db();
-      createCounter(client);
+      client = clientInstance;
+      createCounter(client.db());
+      createIndexes(client.db());
       console.log("connected to mongodb");
     })
     .catch((err) => {
@@ -16,8 +17,12 @@ export const connectToMongoDB = () => {
     });
 };
 
-export const getDB = () => {
+export const getClient = () => {
   return client;
+};
+
+export const getDB = () => {
+  return client.db();
 };
 
 export const createCounter = async (db) => {
@@ -30,6 +35,15 @@ export const createCounter = async (db) => {
       value: 0,
     });
   }
+};
+
+export const createIndexes = async (db) => {
+  await db.collection("products").createIndex({
+    price: 1,
+  });
+
+  await db.collection("products").createIndex({ name: 1, category: -1 });
+  await db.collection("products").createIndex({ desc: "text" });
 };
 
 // var client;

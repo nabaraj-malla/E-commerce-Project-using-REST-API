@@ -11,14 +11,14 @@ export default class CartRepository {
     try {
       const db = getDB();
       const collection = db.collection(this.collection);
-      const id = await this.getNextCounter(db);
+      // const id = await this.getNextCounter(db);
       await collection.updateOne(
         {
           productID: new ObjectId(productID),
           userID: new ObjectId(userID),
         },
         {
-          $setOnInsert: { _id: id },
+          // $setOnInsert: { _id: id },
           $inc: { quantity: quantity },
         },
         {
@@ -54,6 +54,7 @@ export default class CartRepository {
       await collection.deleteOne({
         userID: new ObjectId(userID),
         _id: new ObjectId(cartItemID),
+        // _id: cartItemID,
       });
     } catch (error) {
       console.log(error);

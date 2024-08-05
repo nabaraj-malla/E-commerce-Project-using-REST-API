@@ -22,3 +22,8 @@ reqURL: /api/users/signup - error: Bad control character in string literal in JS
 reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 102 (line 5 column 22)
 reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 96 (line 5 column 22)
 reqURL: /api/products/filter - error: Expected double-quoted property name in JSON at position 24 (line 3 column 1)
+reqURL: /api/users/signin - error: Expected double-quoted property name in JSON at position 60
+reqURL: /api/products/ - error: req is not defined
+reqURL: /api/users/signin - error: Expected double-quoted property name in JSON at position 60
+reqURL: / - error: No default engine was specified and no extension was provided.
+reqURL: / - error: No default engine was specified and no extension was provided.

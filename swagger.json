@@ -1,13 +1,13 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Ecommerce API",
-    "description": "API for ecommerce application",
+    "title": "BuyZone API",
+    "description": "API for BuyZone application",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "http://localhost:9003"
+      "url": "http://localhost:9009"
     }
   ],
   "components": {
@@ -40,6 +40,9 @@
                   "password": {
                     "type": "string"
                   },
+                  "address": {
+                    "type": "string"
+                  },
                   "type": {
                     "type": "string"
                   }
@@ -58,7 +61,6 @@
         }
       }
     },
-
     "/api/users/signin": {
       "post": {
         "tags": ["Users"],
@@ -112,12 +114,25 @@
                   "sizes": {
                     "type": "string"
                   },
+                  "category": {
+                    "type": "string"
+                  },
+                  "stock": {
+                    "type": "number"
+                  },
                   "imageURL": {
                     "type": "string",
                     "format": "binary"
                   }
                 },
-                "required": ["name", "price", "sizes", "imageURL"]
+                "required": [
+                  "name",
+                  "price",
+                  "sizes",
+                  "imageURL",
+                  "category",
+                  "stock"
+                ]
               }
             }
           }
@@ -256,6 +271,140 @@
             }
           }
         },
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/products/averageRating": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get products rating",
+        "description": "User will receive rating of each products",
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/carts": {
+      "post": {
+        "tags": ["Carts"],
+        "summary": "Add product to cart",
+        "description": "User will add a product to cart",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "productID": {
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "type": "number",
+                    "format": "float"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/carts/cartItems": {
+      "get": {
+        "tags": ["Carts"],
+        "summary": "Get cart products",
+        "description": "User will receive cart products",
+
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/carts/delete": {
+      "delete": {
+        "tags": ["Carts"],
+        "summary": "Delete cart products",
+        "description": "User will delete cart products",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cartItemID": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/orders": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Receive cart products",
+        "description": "User will receive cart products",
+
         "security": [
           {
             "JWT": {}

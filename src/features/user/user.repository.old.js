@@ -1,7 +1,7 @@
 import { getDB } from "../../config/mongodb.js";
 import { ApplicationError } from "../../error-handler/applicationError.js";
 
-class UserRepository {
+class OldUserRepository {
   constructor() {
     this.collection = "users";
   }
@@ -16,6 +16,7 @@ class UserRepository {
       await collection.insertOne(newUser);
       return newUser;
     } catch (error) {
+      console.log(error);
       throw new ApplicationError("something went wrong", 500);
     }
   }
@@ -36,4 +37,4 @@ class UserRepository {
   }
 }
 
-export default UserRepository;
+export default OldUserRepository;
