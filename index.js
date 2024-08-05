@@ -22,7 +22,6 @@ import mongoose from "mongoose";
 import likeRouter from "./src/features/like/like.routes.js";
 
 const server = express();
-
 // CORS policy configuration
 server.use(cors());
 
