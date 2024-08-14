@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:9009"
+      "url": "https://e-commerce-project-using-rest-api.onrender.com/"
     }
   ],
   "components": {
