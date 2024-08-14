@@ -21,8 +21,8 @@ userRouter.put("/resetPassword", jwtAuth, (req, res) => {
 userRouter.put("/forgetPassword", (req, res) => {
   userController.forgetPassword(req, res);
 });
-userRouter.put("/updateDetails", jwtAuth, (req, res) => {
-  userController.updateDetails(req, res);
+userRouter.put("/updateProfile", jwtAuth, (req, res) => {
+  userController.updateProfile(req, res);
 });
 // Above we have used arrow function because we have used `this` keyword
 // in user controller's constructor to create instance of UserRepository

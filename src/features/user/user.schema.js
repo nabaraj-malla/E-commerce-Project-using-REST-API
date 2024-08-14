@@ -12,13 +12,12 @@ export const userSchema = new mongoose.Schema({
   },
   password: String,
   address: {
-    type: String,
-    // province: {
-    //   type: String,
-    // },
-    // city: {
-    //   type: String,
-    // },
+    province: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
   },
   type: {
     type: String,

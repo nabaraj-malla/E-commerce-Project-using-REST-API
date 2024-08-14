@@ -1,7 +1,7 @@
 import "./env.js";
-import dotenv from "dotenv";
-dotenv.config();
-import express, { json } from "express";
+// import dotenv from "dotenv";
+// dotenv.config();
+import express from "express";
 import cors from "cors";
 import swagger from "swagger-ui-express";
 // prettier-ignore
@@ -22,6 +22,7 @@ import mongoose from "mongoose";
 import likeRouter from "./src/features/like/like.routes.js";
 
 const server = express();
+
 // CORS policy configuration
 server.use(cors());
 
@@ -31,18 +32,12 @@ server.use(express.urlencoded({ extended: true }));
 
 // swagger
 server.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
-// Routes
 server.use(loggerMiddleware);
-// server.use("/", (req, res) => {
-//   return res.send("localhost:9003/api-docs/");
-// });
-server.get("/", (req, res) => {
-  res.redirect("http://localhost:9009/api-docs/");
-});
 
-// server.use("/", (req, res) => {
-//   return res.send('<a href="http://localhost:9009/api-docs/">Get APIs</a>');
-// });
+console.log(process.env.APP_BASE_URL);
+server.get("/", (req, res) => {
+  res.redirect(`${process.env.APP_BASE_URL}api-docs/`);
+});
 
 // server.set("view engine", "ejs");
 // server.use(express.static("./views"));
@@ -56,11 +51,7 @@ server.use("/api/carts", jwtAuth, cartRouter);
 server.use("/api/orders", jwtAuth, orderRouter);
 server.use("/api/likes", jwtAuth, likeRouter);
 
-// server.get("/", (req, res) => {
-//   return res.send("Welcome to Ecommerce APIs");
-// });
-
-// Error handler Middlewarec
+// Error handler Middleware
 server.use((err, req, res, next) => {
   console.log(err);
   if (err instanceof mongoose.Error.ValidationError) {

@@ -47,8 +47,9 @@ export default class UserController {
         return res.status(400).send("Incorrect credentials");
       } else {
         // compare password with hashed password
-        const result = bcrypt.compare(req.body.password, user.password);
+        const result = await bcrypt.compare(req.body.password, user.password);
         if (result) {
+          console.log("password matched");
           const token = jwt.sign(
             { userID: user._id, email: user.email, type: user.type },
             process.env.JWT_SECRET,
@@ -79,16 +80,21 @@ export default class UserController {
     }
   }
 
-  async updateDetails(req, res) {
+  async updateProfile(req, res) {
     try {
-      const { email, type } = req.body;
-      console.log(email, type);
+      const { name, type, province, city } = req.query;
+      console.log(name, type, province, city);
       const userID = req.userID;
       console.log(userID);
-      const result = await this.userRepository.updateDetails(
+      const address = {
+        province: province,
+        city,
+      };
+      const result = await this.userRepository.updateProfile(
         userID,
-        email,
-        type
+        name,
+        type,
+        address
       );
       return res.status(200).send({ status: true, updatedUser: result });
     } catch (error) {

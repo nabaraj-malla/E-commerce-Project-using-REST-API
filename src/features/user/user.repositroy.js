@@ -9,8 +9,8 @@ export default class UserRepository {
     try {
       //   let user = await UserModel.findById(userID);
       //   user.password = newPassword;
-      await UserModel.findByIdAndUpdate(userID, { password: newPassword });
       //   user.save();
+      await UserModel.findByIdAndUpdate(userID, { password: newPassword });
     } catch (error) {
       console.log(error);
       throw new ApplicationError("Error in password reset", 500);
@@ -19,7 +19,6 @@ export default class UserRepository {
   async signUp(user) {
     console.log(user);
     try {
-      // creating instance of model
       const newUser = new UserModel(user);
       await newUser.save();
       return newUser;
@@ -61,13 +60,14 @@ export default class UserRepository {
     }
   }
 
-  async updateDetails(userID, email, type) {
+  async updateProfile(userID, name, type, address) {
     try {
       const result = await UserModel.findByIdAndUpdate(
         userID,
         {
-          email: email,
+          name: name,
           type: type,
+          address: address,
         },
         {
           returnDocument: "after",
