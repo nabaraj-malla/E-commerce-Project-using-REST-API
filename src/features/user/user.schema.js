@@ -11,14 +11,15 @@ export const userSchema = new mongoose.Schema({
     unique: true,
   },
   password: String,
-  address: {
-    province: {
-      type: String,
-    },
-    city: {
-      type: String,
-    },
-  },
+  // address: {
+  //   province: {
+  //     type: String,
+  //   },
+  //   city: {
+  //     type: String,
+  //   },
+  // },
+  address: String,
   type: {
     type: String,
     enum: ["Customer", "Vendor", "Admin"],
