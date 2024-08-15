@@ -114,14 +114,7 @@
             }
           },
           {
-            "name": "province",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "city",
+            "name": "address",
             "in": "query",
             "schema": {
               "type": "string"

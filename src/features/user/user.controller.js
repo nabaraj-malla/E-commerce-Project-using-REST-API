@@ -80,14 +80,15 @@ export default class UserController {
 
   async updateProfile(req, res) {
     try {
-      const { name, type, province, city } = req.query;
-      console.log(name, type, province, city);
+      // const { name, type, province, city } = req.query;
+      const { name, type, address } = req.query;
+      // console.log(name, type, province, city);
       const userID = req.userID;
       console.log(userID);
-      const address = {
-        province: province,
-        city,
-      };
+      // const address = {
+      //   province: province,
+      //   city,
+      // };
       const result = await this.userRepository.updateProfile(
         userID,
         name,
