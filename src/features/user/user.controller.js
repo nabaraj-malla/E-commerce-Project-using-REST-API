@@ -35,8 +35,6 @@ export default class UserController {
       return res.status(201).send({ status: true, user: user });
     } catch (error) {
       next(error);
-      // console.log(error);
-      // throw new Error("Internal Server Error", 500);
     }
   }
 
