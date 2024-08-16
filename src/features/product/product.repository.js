@@ -98,8 +98,12 @@ class ProductRepository {
         conditions.push({ price: { $lte: parseFloat(maxPrice) } });
       }
 
+      // if (category !== undefined && category !== null) {
+      //   conditions.push({ category: { $eq: category } });
+      // }
+
       if (category !== undefined && category !== null) {
-        conditions.push({ category: { $eq: category } });
+        conditions.push({ categories: { $eq: category } });
       }
 
       if (conditions.length == 0) {

@@ -61,6 +61,7 @@ export default class ProductController {
       const minPrice = parseFloat(req.query.minPrice);
       const maxPrice = parseFloat(req.query.maxPrice);
       const category = req.query.category;
+      console.log("category", category);
       let result = await this.productRepository.filter(
         minPrice,
         maxPrice,

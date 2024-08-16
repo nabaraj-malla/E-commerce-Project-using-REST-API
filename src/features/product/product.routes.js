@@ -8,9 +8,6 @@ const router = express.Router();
 
 const productController = new ProductController();
 
-router.get("/", (req, res) => {
-  productController.getAllProducts(req, res);
-});
 // router.post(
 //   "/add",
 //   restrictAddProduct,
@@ -26,6 +23,10 @@ router.get("/", (req, res) => {
 
 router.post("/add", upload.single("imageURL"), (req, res) => {
   productController.addProduct(req, res);
+});
+
+router.get("/", (req, res) => {
+  productController.getAllProducts(req, res);
 });
 
 router.get("/averagePrice", (req, res, next) => {
