@@ -15,12 +15,12 @@ export default class ProductController {
   async addProduct(req, res) {
     try {
       console.log("req.body", req.body);
-      let { name, desc, price, inStock, imageURL, sizes, categories } =
-        req.body;
-      // let { name, desc, price, inStock, sizes, categories } = req.body;
+      // let { name, desc, price, inStock, imageURL, sizes, categories } =
+      //   req.body;
+      let { name, desc, price, inStock, sizes, categories } = req.body;
       inStock = parseFloat(inStock);
       price = parseFloat(price);
-      // const imageURL = req.file.filename;
+      const imageURL = req.file.path;
       categories = categories.split(",").map((e) => e.trim());
       sizes = sizes.split(",");
       const newProduct = new ProductModel(
@@ -31,11 +31,13 @@ export default class ProductController {
         imageURL,
         sizes,
         null,
+        // null
         categories
       );
       const result = await this.productRepository.add(newProduct);
       res.status(201).send({ success: true, result });
     } catch (error) {
+      console.log("error", error);
       throw new ApplicationError("Error in adding data", 400);
     }
   }

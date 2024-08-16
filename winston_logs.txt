@@ -35,3 +35,15 @@
 {"level":"info","message":"Thu Aug 15 2024 13:45:46 GMT+0545 (Nepal Time) \n/ - req.body - {}  \nreq.query - {} ","service":"request-logging"}
 {"level":"info","message":"Thu Aug 15 2024 13:47:31 GMT+0545 (Nepal Time) \n/api/users/signup - req.body - {\"name\":\"user15\",\"email\":\"use15@test.com\",\"password\":\"user15#15\",\"address\":\"Damauli\",\"type\":\"Customer\"}  \nreq.query - {} ","service":"request-logging"}
 {"level":"info","message":"Thu Aug 15 2024 14:01:18 GMT+0545 (Nepal Time) \n/ - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 17:48:18 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 17:50:14 GMT+0545 (Nepal Time) \n/api/users/signup - req.body - {\"name\":\"user16\",\"email\":\"use16@test.com\",\"password\":\"user16#16\",\"address\":\"Pkr\",\"type\":\"Customer\"}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 17:50:58 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 18:00:21 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 18:01:26 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 18:08:32 GMT+0545 (Nepal Time) \n/ - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 18:20:18 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 18:22:01 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 18:40:01 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 18:42:41 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 18:46:27 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Fri Aug 16 2024 18:49:47 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}

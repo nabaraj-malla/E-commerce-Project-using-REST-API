@@ -188,13 +188,16 @@
                     "type": "number",
                     "format": "float"
                   },
+                  "categories": {
+                    "type": "string"
+                  },
+                  "desc": {
+                    "type": "string"
+                  },
                   "sizes": {
                     "type": "string"
                   },
-                  "category": {
-                    "type": "string"
-                  },
-                  "stock": {
+                  "inStock": {
                     "type": "number"
                   },
                   "imageURL": {
@@ -202,14 +205,7 @@
                     "format": "binary"
                   }
                 },
-                "required": [
-                  "name",
-                  "price",
-                  "sizes",
-                  "imageURL",
-                  "category",
-                  "stock"
-                ]
+                "required": ["name", "price", "sizes", "imageURL", "inStock"]
               }
             }
           }

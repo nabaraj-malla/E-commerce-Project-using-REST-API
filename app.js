@@ -43,8 +43,8 @@ server.get("/", (req, res) => {
 //   return res.render("home");
 // });
 
-server.use("/api/products", jwtAuth, ProductRouter);
 server.use("/api/users", userRouter);
+server.use("/api/products", jwtAuth, ProductRouter);
 server.use("/api/carts", jwtAuth, cartRouter);
 server.use("/api/orders", jwtAuth, orderRouter);
 server.use("/api/likes", jwtAuth, likeRouter);

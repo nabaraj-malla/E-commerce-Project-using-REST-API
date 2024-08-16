@@ -28,10 +28,6 @@ router.post("/add", upload.single("imageURL"), (req, res) => {
   productController.addProduct(req, res);
 });
 
-// router.post("/add", (req, res) => {
-//   productController.addProduct(req, res);
-// });
-
 router.get("/averagePrice", (req, res, next) => {
   productController.averagePrice(req, res, next);
 });
