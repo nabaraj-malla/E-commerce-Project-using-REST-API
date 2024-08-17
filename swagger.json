@@ -24,7 +24,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "user registration",
-        "description": "Register as new user",
+        "description": "ALERT valid user type = Cutomer, Vendor, Admin",
         "requestBody": {
           "content": {
             "application/json": {
@@ -174,7 +174,7 @@
       "post": {
         "tags": ["Products"],
         "summary": "Add a product",
-        "description": "User will add a product",
+        "description": "AVAILABLE CATEGORIES FOE NOW Electronics = 66afb53be55e7b9ba87d9b45, Clothing = 66afb53be55e7b9ba87d9b46 NOTE: can add your own categories",
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -338,6 +338,9 @@
                   "rating": {
                     "type": "number",
                     "format": "float"
+                  },
+                  "text": {
+                    "type": "string"
                   }
                 }
               }

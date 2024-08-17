@@ -29,21 +29,26 @@ router.get("/", (req, res) => {
   productController.getAllProducts(req, res);
 });
 
-router.get("/averagePrice", (req, res, next) => {
-  productController.averagePrice(req, res, next);
-});
-router.get("/averageRating", (req, res, next) => {
-  productController.averageRating(req, res, next);
-});
 router.get("/:id", (req, res) => {
   productController.getOneProduct(req, res);
 });
+
 router.post("/filter", (req, res) => {
   productController.filterProducts(req, res);
 });
+
 router.post("/rate", (req, res) => {
   productController.rateProduct(req, res);
 });
+
+router.get("/averagePrice", (req, res, next) => {
+  productController.averagePrice(req, res, next);
+});
+
+router.get("/averageRating", (req, res, next) => {
+  productController.averageRating(req, res, next);
+});
+
 router.patch("/update", (req, res) => {
   productController.updateProduct(req, res);
 });

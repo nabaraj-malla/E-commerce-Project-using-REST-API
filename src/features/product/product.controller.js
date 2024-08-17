@@ -1,6 +1,8 @@
+import mongoose from "mongoose";
 import { ApplicationError } from "../../error-handler/applicationError.js";
 import ProductModel from "./product.model.js";
 import ProductRepository from "./product.repository.js";
+import { ObjectId } from "mongodb";
 export default class ProductController {
   constructor() {
     this.productRepository = new ProductRepository();
@@ -77,6 +79,9 @@ export default class ProductController {
   async rateProduct(req, res) {
     try {
       const { productID, rating, text } = req.body;
+      console.log("productID", typeof productID);
+      console.log("mongodb ID", new ObjectId(productID));
+      console.log("mongoose objectID", new mongoose.Types.ObjectId(productID));
       const userID = req.userID;
       const result = await this.productRepository.rate(
         userID,
