@@ -115,3 +115,7 @@
 {"level":"info","message":"Sun Aug 18 2024 12:34:57 GMT+0545 (Nepal Time) \n/api/products/averageRating/66bf4e6f755dfd0040d3dec8 - req.body - {}  \nreq.query - {} ","service":"request-logging"}
 {"level":"info","message":"Sun Aug 18 2024 12:35:26 GMT+0545 (Nepal Time) \n/api/products/averageRating/66bf4e6f755dfd0040d3dec8 - req.body - {}  \nreq.query - {} ","service":"request-logging"}
 {"level":"info","message":"Sun Aug 18 2024 12:36:32 GMT+0545 (Nepal Time) \n/api/products/averageRating/66bf4e6f755dfd0040d3dec8 - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Sun Aug 18 2024 18:05:05 GMT+0545 (Nepal Time) \n/api/products/addCategory - req.body - {\"category\":\"stationery\"}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Sun Aug 18 2024 18:05:31 GMT+0545 (Nepal Time) \n/api/products/addCategory - req.body - {\"category\":\"stationery\"}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Sun Aug 18 2024 18:08:55 GMT+0545 (Nepal Time) \n/api/products/add - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Sun Aug 18 2024 18:13:24 GMT+0545 (Nepal Time) \n/ - req.body - {}  \nreq.query - {} ","service":"request-logging"}

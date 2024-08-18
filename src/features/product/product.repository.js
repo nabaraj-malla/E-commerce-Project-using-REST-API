@@ -7,7 +7,7 @@ import { reviewSchema } from "./review.schema.js";
 import { categorySchema } from "./category.schema.js";
 const ProductModel = mongoose.model("Product", productSchema);
 const ReviewModel = mongoose.model("review", reviewSchema);
-const CategoryModel = mongoose.model("Category", categorySchema);
+const CategoryModel = mongoose.model("category", categorySchema);
 // const CategoryModel = mongoose.model("category", categorySchema);
 
 class ProductRepository {
@@ -311,8 +311,6 @@ class ProductRepository {
       console.log("total", total);
       average = total / productReviews.length;
       console.log("average", average);
-      // return average;
-      // return product;
       const result = {
         success: true,
         averageRating: average,
@@ -321,6 +319,17 @@ class ProductRepository {
     } catch (error) {
       console.log(error);
       throw new ApplicationError("Error in computing average rating", 500);
+    }
+  }
+
+  async newCategory(category) {
+    try {
+      const newCategoryDoc = new CategoryModel({ name: category });
+      const result = await newCategoryDoc.save();
+      return result;
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError("Error in adding new category", 500);
     }
   }
 }

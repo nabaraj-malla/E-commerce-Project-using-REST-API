@@ -135,4 +135,16 @@ export default class ProductController {
       throw new ApplicationError("Error in computing average rating", 500);
     }
   }
+
+  async addProductCategory(req, res) {
+    try {
+      console.log(req.body);
+      const { category } = req.body;
+      const result = await this.productRepository.newCategory(category);
+      return res.status(201).send(result);
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError("Error in adding new category", 500);
+    }
+  }
 }

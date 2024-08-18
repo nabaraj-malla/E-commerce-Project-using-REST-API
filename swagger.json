@@ -392,6 +392,40 @@
         }
       }
     },
+    "/api/products/addCategory": {
+      "post": {
+        "tags": ["Products"],
+        "summary": "add new product category",
+        "description": "Resultant category id will be provided while adding new category",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/api/carts": {
       "post": {
         "tags": ["Carts"],

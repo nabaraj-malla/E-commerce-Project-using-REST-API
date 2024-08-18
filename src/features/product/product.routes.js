@@ -41,16 +41,20 @@ router.post("/rate", (req, res) => {
   productController.rateProduct(req, res);
 });
 
-router.get("/averagePrice", (req, res, next) => {
-  productController.averagePrice(req, res, next);
-});
-
 router.get("/averageRating/:productId", (req, res, next) => {
   productController.averageRating(req, res, next);
 });
 
-router.patch("/update", (req, res) => {
-  productController.updateProduct(req, res);
+router.post("/addCategory", (req, res) => {
+  productController.addProductCategory(req, res);
 });
+
+// router.get("/averagePrice", (req, res, next) => {
+//   productController.averagePrice(req, res, next);
+// });
+
+// router.patch("/update", (req, res) => {
+//   productController.updateProduct(req, res);
+// });
 
 export default router;
