@@ -124,8 +124,12 @@ export default class ProductController {
 
   async averageRating(req, res, next) {
     try {
-      const results = await this.productRepository.averageProductRating();
-      return res.status(200).send(results);
+      const productId = req.params.productId;
+      console.log("productId", productId);
+      const result = await this.productRepository.averageProductRating(
+        productId
+      );
+      return res.status(200).send(result);
     } catch (error) {
       console.log(error);
       throw new ApplicationError("Error in computing average rating", 500);

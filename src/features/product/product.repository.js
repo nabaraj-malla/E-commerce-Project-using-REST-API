@@ -6,13 +6,13 @@ import { productSchema } from "./product.schema.js";
 import { reviewSchema } from "./review.schema.js";
 import { categorySchema } from "./category.schema.js";
 const ProductModel = mongoose.model("Product", productSchema);
-const ReviewModel = mongoose.model("reivew", reviewSchema);
+const ReviewModel = mongoose.model("review", reviewSchema);
 const CategoryModel = mongoose.model("Category", categorySchema);
 // const CategoryModel = mongoose.model("category", categorySchema);
 
 class ProductRepository {
   constructor() {
-    this.collection = "products";
+    this.collection = "product";
   }
 
   async add(productData) {
@@ -270,22 +270,54 @@ class ProductRepository {
       throw new ApplicationError("Error in computing aggregation", 500);
     }
   }
-  async averageProductRating() {
+  // async averageProductRating() {
+  //   try {
+  //     const db = getDB();
+  //     const collection = db.collection(this.collection);
+  //     const results = await collection
+  //       .aggregate([
+  //         { $unwind: "$ratings" },
+  //         {
+  //           $group: {
+  //             _id: "$name",
+  //             averageRating: { $avg: "$ratings.rating" },
+  //           },
+  //         },
+  //       ])
+  //       .toArray();
+  //     return results;
+  //   } catch (error) {
+  //     console.log(error);
+  //     throw new ApplicationError("Error in computing average rating", 500);
+  //   }
+  // }
+
+  async averageProductRating(productId) {
     try {
-      const db = getDB();
-      const collection = db.collection(this.collection);
-      const results = await collection
-        .aggregate([
-          { $unwind: "$ratings" },
-          {
-            $group: {
-              _id: "$name",
-              averageRating: { $avg: "$ratings.rating" },
-            },
-          },
-        ])
-        .toArray();
-      return results;
+      console.log("average product rating");
+      const product = await ProductModel.findOne({
+        _id: new mongoose.Types.ObjectId(productId),
+      }).populate("reviews");
+      console.log("product", product);
+      let productReviews = product.reviews;
+      console.log("productReviews", productReviews);
+      let total = 0;
+      let average = 0;
+      productReviews.forEach((review) => {
+        console.log("review", review);
+        total += review.rating;
+      });
+
+      console.log("total", total);
+      average = total / productReviews.length;
+      console.log("average", average);
+      // return average;
+      // return product;
+      const result = {
+        success: true,
+        averageRating: average,
+      };
+      return result;
     } catch (error) {
       console.log(error);
       throw new ApplicationError("Error in computing average rating", 500);

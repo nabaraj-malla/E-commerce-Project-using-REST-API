@@ -362,11 +362,21 @@
         }
       }
     },
-    "/api/products/averageRating": {
+    "/api/products/averageRating/{productId}": {
       "get": {
         "tags": ["Products"],
-        "summary": "Get products rating",
-        "description": "User will receive rating of each products",
+        "summary": "Get product average rating",
+        "description": "Must provide productId, User will receive rating of each products",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "JWT": {}

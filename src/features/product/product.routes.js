@@ -45,7 +45,7 @@ router.get("/averagePrice", (req, res, next) => {
   productController.averagePrice(req, res, next);
 });
 
-router.get("/averageRating", (req, res, next) => {
+router.get("/averageRating/:productId", (req, res, next) => {
   productController.averageRating(req, res, next);
 });
 

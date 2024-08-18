@@ -37,12 +37,6 @@ server.get("/", (req, res) => {
   res.redirect(`${process.env.APP_BASE_URL}api-docs/`);
 });
 
-// server.set("view engine", "ejs");
-// server.use(express.static("./views"));
-// server.use("/", (req, res) => {
-//   return res.render("home");
-// });
-
 server.use("/api/users", userRouter);
 server.use("/api/products", jwtAuth, ProductRouter);
 server.use("/api/carts", jwtAuth, cartRouter);
