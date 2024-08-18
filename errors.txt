@@ -3,3 +3,4 @@ reqURL: /api/users/signup - error: Bad control character in string literal in JS
 reqURL: /api/users/signup - error: Expected ',' or '}' after property value in JSON at position 124
 reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 104
 reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 104
+reqURL: /api/users/signin - error: Bad control character in string literal in JSON at position 59

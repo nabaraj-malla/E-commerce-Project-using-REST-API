@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 import { userSchema } from "./user.schema.js";
 import { ApplicationError } from "../../error-handler/applicationError.js";
 
-const UserModel = mongoose.model("User", userSchema);
-
+export const UserModel = mongoose.model("User", userSchema);
 export default class UserRepository {
   async resetPassword(userID, newPassword) {
     try {

@@ -31,9 +31,11 @@ export default class CartItemsController {
   async delete(req, res) {
     try {
       const userID = req.userID;
+      console.log("userID", userID);
       const { cartItemID } = req.body;
-      await this.cartRepository.delete(userID, cartItemID);
-      return res.status(200).send("item deleted");
+      console.log("cartItemID", cartItemID);
+      const result = await this.cartRepository.delete(userID, cartItemID);
+      return res.status(200).send(result);
     } catch (error) {
       console.log(error);
       throw new ApplicationError("Error in deleting items from cart", 500);

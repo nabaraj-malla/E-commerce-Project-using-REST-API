@@ -426,7 +426,7 @@
         }
       }
     },
-    "/api/carts": {
+    "/api/carts/new": {
       "post": {
         "tags": ["Carts"],
         "summary": "Add product to cart",
@@ -468,7 +468,7 @@
       "get": {
         "tags": ["Carts"],
         "summary": "Get cart products",
-        "description": "User will receive cart products",
+        "description": "Loggedin user will receive their cart products",
 
         "security": [
           {
@@ -488,8 +488,8 @@
     "/api/carts/delete": {
       "delete": {
         "tags": ["Carts"],
-        "summary": "Delete cart products",
-        "description": "User will delete cart products",
+        "summary": "Delete cart products of loggedin user",
+        "description": "Must provide cartItem id",
         "requestBody": {
           "content": {
             "application/json": {
