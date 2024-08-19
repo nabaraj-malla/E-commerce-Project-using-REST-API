@@ -196,3 +196,9 @@
 {"level":"info","message":"Mon Aug 19 2024 12:59:05 GMT+0545 (Nepal Time) \n/api/carts/new - req.body - {\"productID\":\"66bf431a1001d5bd8bbe5abe\",\"quantity\":3}  \nreq.query - {} ","service":"request-logging"}
 {"level":"info","message":"Mon Aug 19 2024 13:00:14 GMT+0545 (Nepal Time) \n/api/carts/new - req.body - {\"productID\":\"66c1e7db1ed43455a3915168\",\"quantity\":4}  \nreq.query - {} ","service":"request-logging"}
 {"level":"info","message":"Mon Aug 19 2024 13:04:04 GMT+0545 (Nepal Time) \n/api/orders/ - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Mon Aug 19 2024 13:19:53 GMT+0545 (Nepal Time) \n/api/carts/new - req.body - {\"productID\":\"66c1e7db1ed43455a3915168\",\"quantity\":2}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Mon Aug 19 2024 13:21:40 GMT+0545 (Nepal Time) \n/api/carts/new - req.body - {\"productID\":\"66bf4e6f755dfd0040d3dec8\",\"quantity\":3}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Mon Aug 19 2024 13:23:39 GMT+0545 (Nepal Time) \n/api/orders/ - req.body - {}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Mon Aug 19 2024 13:41:43 GMT+0545 (Nepal Time) \n/api/carts/new - req.body - {\"productID\":\"66bf4e6f755dfd0040d3dec8\",\"quantity\":2}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Mon Aug 19 2024 13:42:16 GMT+0545 (Nepal Time) \n/api/carts/new - req.body - {\"productID\":\"66c1e7db1ed43455a3915168\",\"quantity\":2}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Mon Aug 19 2024 13:42:38 GMT+0545 (Nepal Time) \n/api/orders/ - req.body - {}  \nreq.query - {} ","service":"request-logging"}

@@ -85,7 +85,7 @@ export default class OrderRepository {
     for (let i = 0; i < productQuantities.length; i++) {
       for (let j = 0; j < productPrices.length; j++) {
         totalPrice += productQuantities[i] * productPrices[j];
-        i++, j++;
+        i++;
       }
     }
     console.log("totalPrice", totalPrice);
