@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "BuyZone API",
-    "description": "API for BuyZone application",
+    "title": "E-Commerce Platform APIs",
+    "description": "RESTful web APIs that provides an e-commerce functionality, covering user management (signup, signin, profile updates, password reset), product lifecycle (creation, retrieval, modification, deletion, categorization, rating, filtration), cart management (adding,retrieve,removing items), and order management NOTE: don't change key part only change value part during testing",
     "version": "1.0.0"
   },
   "servers": [
@@ -24,7 +24,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "user registration",
-        "description": "ALERT valid user type = Cutomer, Vendor, Admin",
+        "description": "NOTE: valid user type = Cutomer, Vendor, Admin",
         "requestBody": {
           "content": {
             "application/json": {
@@ -32,19 +32,24 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "IamUser"
                   },
                   "email": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "iamuser@test.com [must end with test.com]"
                   },
                   "password": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "iAmuser@123 [password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character and minimum length of 8]"
                   },
                   "address": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Pokhara"
                   },
                   "type": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Customer || Vendor"
                   }
                 }
               }
@@ -64,8 +69,8 @@
     "/api/users/signin": {
       "post": {
         "tags": ["Users"],
-        "summary": "user login",
-        "description": "user login to get token",
+        "summary": "Authenticate user credentials",
+        "description": "Enables existing users to log in using their email and password and receives token to authorize to test other apis",
         "requestBody": {
           "content": {
             "application/json": {
@@ -73,10 +78,12 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "iamuser@test.com"
                   },
                   "password": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "iAmuser@123"
                   }
                 }
               }
@@ -96,28 +103,31 @@
     "/api/users/updateProfile": {
       "put": {
         "tags": ["Users"],
-        "summary": "update profile",
-        "description": "update your details",
+        "summary": "update your profile",
+        "description": "Allows authenticated users to update their personal details such as name, address",
         "parameters": [
           {
             "name": "name",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "IamNewUser"
             }
           },
           {
             "name": "type",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "Vendor"
             }
           },
           {
             "name": "address",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "Zero k.m"
             }
           }
         ],
@@ -139,8 +149,8 @@
     "/api/users/resetPassword": {
       "put": {
         "tags": ["Users"],
-        "summary": "change password",
-        "description": "update your password credential",
+        "summary": "Reset user password",
+        "description": "Sends a password reset link to the user’s registered email, allowing them to securely reset their password",
         "requestBody": {
           "content": {
             "application/json": {
@@ -148,7 +158,8 @@
                 "type": "object",
                 "properties": {
                   "newPassword": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "newPassword@45"
                   }
                 }
               }

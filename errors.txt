@@ -4,3 +4,17 @@ reqURL: /api/users/signup - error: Expected ',' or '}' after property value in J
 reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 104
 reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 104
 reqURL: /api/users/signin - error: Bad control character in string literal in JSON at position 59
+reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 77
+reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 78
+reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 77
+reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 78
+reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 77
+reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 77
+reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 78
+reqURL: /api/users/signup - error: Bad control character in string literal in JSON at position 77
+reqURL: /api/users/signup - error: Unexpected token 'V', ..." "address"Vendor"
+}" is not valid JSON
+reqURL: /api/users/signup - error: Unexpected token 'V', ..."address: "Vendor"
+}" is not valid JSON
+reqURL: /api/users/signup - error: Unexpected token 'V', ..."address: "Vendor"
+}" is not valid JSON
