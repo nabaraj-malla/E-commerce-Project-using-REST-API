@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://e-commerce-project-using-rest-api.onrender.com/"
+      "url": "http://localhost:9009/"
     }
   ],
   "components": {
@@ -24,7 +24,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "user registration",
-        "description": "NOTE: valid user type = Cutomer, Vendor, Admin",
+        "description": "NOTE: valid user type = Cutomer, Vendor",
         "requestBody": {
           "content": {
             "application/json": {
@@ -41,7 +41,7 @@
                   },
                   "password": {
                     "type": "string",
-                    "example": "iAmuser@123 [password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character and minimum length of 8]"
+                    "example": "iAmuser@123"
                   },
                   "address": {
                     "type": "string",
