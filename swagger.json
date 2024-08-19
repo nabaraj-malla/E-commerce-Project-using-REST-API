@@ -522,8 +522,8 @@
     "/api/orders": {
       "get": {
         "tags": ["Orders"],
-        "summary": "Receive cart products",
-        "description": "User will receive cart products",
+        "summary": "Receive order details",
+        "description": "User will receive order details",
 
         "security": [
           {

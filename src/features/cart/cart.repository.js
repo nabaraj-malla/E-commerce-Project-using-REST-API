@@ -3,7 +3,7 @@ import { getDB } from "../../config/mongodb.js";
 import { ApplicationError } from "../../error-handler/applicationError.js";
 import { cartSchema } from "./cart.schema.js";
 import mongoose from "mongoose";
-const CartModel = mongoose.model("cart", cartSchema);
+export const CartModel = mongoose.model("cart", cartSchema);
 import { UserModel } from "../user/user.repositroy.js";
 
 export default class CartRepository {

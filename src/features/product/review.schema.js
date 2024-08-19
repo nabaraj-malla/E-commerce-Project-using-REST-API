@@ -9,6 +9,6 @@ export const reviewSchema = new mongoose.Schema({
   },
   userID: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User",
   },
 });

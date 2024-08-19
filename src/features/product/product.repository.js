@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import { productSchema } from "./product.schema.js";
 import { reviewSchema } from "./review.schema.js";
 import { categorySchema } from "./category.schema.js";
-const ProductModel = mongoose.model("Product", productSchema);
+export const ProductModel = mongoose.model("Product", productSchema);
 const ReviewModel = mongoose.model("review", reviewSchema);
 const CategoryModel = mongoose.model("category", categorySchema);
 // const CategoryModel = mongoose.model("category", categorySchema);
