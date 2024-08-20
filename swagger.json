@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "E-Commerce Platform APIs",
-    "description": "RESTful web APIs that provides an e-commerce functionality, covering user management (signup, signin, profile updates, password reset), product lifecycle (creation, retrieval, modification, deletion, categorization, rating, filtration), cart management (adding,retrieve,removing items), and order management NOTE: don't change key part only change value part during testing",
+    "description": "RESTful web APIs that provides an e-commerce functionality, covering user management (signup, signin, profile updates, password reset), product lifecycle (creation, retrieval, modification, deletion, categorization, rating, filtration), cart management (adding,retrieve,removing items), and order management.  \nNOTE: don't change key part only change value part during testing  \nNOTE: Try with your own value for all APIs available",
     "version": "1.0.0"
   },
   "servers": [
@@ -24,7 +24,7 @@
       "post": {
         "tags": ["Users"],
         "summary": "user registration",
-        "description": "NOTE: valid user type = Cutomer, Vendor",
+        "description": "NOTE: valid user type = Cutomer, Vendor  \nProvide one of above type in user signup's 'type' field",
         "requestBody": {
           "content": {
             "application/json": {
@@ -49,7 +49,7 @@
                   },
                   "type": {
                     "type": "string",
-                    "example": "Customer || Vendor"
+                    "example": "Customer"
                   }
                 }
               }
@@ -150,7 +150,7 @@
       "put": {
         "tags": ["Users"],
         "summary": "Reset user password",
-        "description": "Sends a password reset link to the user’s registered email, allowing them to securely reset their password",
+        "description": "Allows user to reset their password",
         "requestBody": {
           "content": {
             "application/json": {
@@ -184,8 +184,8 @@
     "/api/products/add": {
       "post": {
         "tags": ["Products"],
-        "summary": "Add a product",
-        "description": "AVAILABLE CATEGORIES FOE NOW Electronics = 66afb53be55e7b9ba87d9b45, Clothing = 66afb53be55e7b9ba87d9b46 NOTE: can add your own categories",
+        "summary": "Add a new product",
+        "description": "Allows authorized users to create and list new products with details such as name, price, and category  \nAvailable categories for now, Electronics = 66afb53be55e7b9ba87d9b45, Clothing = 66afb53be55e7b9ba87d9b46, Sports = 66afb53be55e7b9ba87d9b44  \nProvide one or more id for categories field seperated by commas",
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -193,23 +193,29 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "MacBook"
                   },
                   "price": {
                     "type": "number",
-                    "format": "float"
+                    "format": "float",
+                    "example": 225000
                   },
                   "categories": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "66afb53be55e7b9ba87d9b45"
                   },
                   "desc": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Mac is so popular and should be considered for your coding activities"
                   },
                   "sizes": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "13-inch,15-inch"
                   },
                   "inStock": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 15
                   },
                   "imageURL": {
                     "type": "string",
@@ -239,8 +245,8 @@
     "/api/products": {
       "get": {
         "tags": ["Products"],
-        "summary": "Get products",
-        "description": "User will receive all the products",
+        "summary": "Get All products",
+        "description": "Fetches a list of all available products on the platform",
         "security": [
           {
             "JWT": {}
@@ -261,14 +267,15 @@
       "get": {
         "tags": ["Products"],
         "summary": "Get a product by ID",
-        "description": "User will receive the product",
+        "description": " Retrieves detailed information about a specific product based on its unique identifier",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "66bf84f03506cee46ae8f0de"
             }
           }
         ],
@@ -291,14 +298,15 @@
       "post": {
         "tags": ["Products"],
         "summary": "Get a product based on filter",
-        "description": "User will receive the filtered products",
+        "description": "Provides options to search and filter products based on attributes like category, price range, and rating",
         "parameters": [
           {
             "name": "minPrice",
             "in": "query",
             "schema": {
               "type": "number",
-              "format": "float"
+              "format": "float",
+              "example": 150000
             }
           },
           {
@@ -306,14 +314,16 @@
             "in": "query",
             "schema": {
               "type": "number",
-              "format": "float"
+              "format": "float",
+              "example": 250000
             }
           },
           {
             "name": "category",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "66afb53be55e7b9ba87d9b45"
             }
           }
         ],
@@ -336,7 +346,7 @@
       "post": {
         "tags": ["Products"],
         "summary": "Rate a product",
-        "description": "User will rate a product",
+        "description": "Allows user to submit rating and review to product  \nProvide productId in productID field",
         "requestBody": {
           "content": {
             "application/json": {
@@ -344,14 +354,17 @@
                 "type": "object",
                 "properties": {
                   "productID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "66bf84f03506cee46ae8f0de"
                   },
                   "rating": {
                     "type": "number",
-                    "format": "float"
+                    "format": "float",
+                    "example": 8
                   },
                   "text": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "long battery life but needed more ports."
                   }
                 }
               }
@@ -376,15 +389,16 @@
     "/api/products/averageRating/{productId}": {
       "get": {
         "tags": ["Products"],
-        "summary": "Get product average rating",
-        "description": "Must provide productId, User will receive rating of each products",
+        "summary": "Get product average rating of a product",
+        "description": "Calculates and returns the average rating based on all user reviews for a specific product  \nProvide productId in productID field",
         "parameters": [
           {
             "name": "productId",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "66bf84f03506cee46ae8f0de"
             }
           }
         ],
@@ -407,7 +421,7 @@
       "post": {
         "tags": ["Products"],
         "summary": "add new product category",
-        "description": "Resultant category id will be provided while adding new category",
+        "description": "Resultant category id will be provided while adding new category.  \ncreate your own category below is for demo purpose.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -415,7 +429,8 @@
                 "type": "object",
                 "properties": {
                   "category": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "food"
                   }
                 }
               }
@@ -441,7 +456,7 @@
       "post": {
         "tags": ["Carts"],
         "summary": "Add product to cart",
-        "description": "User will add a product to cart",
+        "description": "User will add a product to cart by specifying product ID and quantity",
         "requestBody": {
           "content": {
             "application/json": {
@@ -449,11 +464,13 @@
                 "type": "object",
                 "properties": {
                   "productID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "66bf84f03506cee46ae8f0de"
                   },
                   "quantity": {
                     "type": "number",
-                    "format": "float"
+                    "format": "float",
+                    "example": 2
                   }
                 }
               }
@@ -479,7 +496,7 @@
       "get": {
         "tags": ["Carts"],
         "summary": "Get cart products",
-        "description": "Loggedin user will receive their cart products",
+        "description": "Fetches the list of products currently added to the user's cart",
 
         "security": [
           {
@@ -508,7 +525,8 @@
                 "type": "object",
                 "properties": {
                   "cartItemID": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Provide your cartItem id"
                   }
                 }
               }
@@ -534,7 +552,7 @@
       "get": {
         "tags": ["Orders"],
         "summary": "Receive order details",
-        "description": "User will receive order details",
+        "description": "User will receive order details including product, time and total amount if cart item availabe",
 
         "security": [
           {
