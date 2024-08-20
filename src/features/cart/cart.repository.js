@@ -23,6 +23,7 @@ export default class CartRepository {
         }
       );
       console.log("result", result);
+      return result;
     } catch (error) {
       console.log(error);
       throw new ApplicationError("Error in adding item to cart", 500);

@@ -89,7 +89,7 @@ export default class ProductController {
         rating,
         text
       );
-      return res.status(200).send({ status: "rating added", result });
+      return res.status(200).send({ status: "rating added", review: result });
     } catch (error) {
       console.log(error);
       throw new ApplicationError("error in rate product", 400);

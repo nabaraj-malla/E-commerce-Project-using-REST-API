@@ -201,6 +201,7 @@ class ProductRepository {
           $push: { reviews: result._id },
         }
       );
+      return result;
 
       // const db = getDB();
       // const collection = db.collection(this.collection);

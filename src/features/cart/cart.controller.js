@@ -9,7 +9,7 @@ export default class CartItemsController {
     try {
       const { productID, quantity } = req.body;
       const userID = req.userID;
-      await this.cartRepository.add(productID, userID, quantity);
+      const result = await this.cartRepository.add(productID, userID, quantity);
       return res.status(201).send("item added");
     } catch (error) {
       console.log(error);

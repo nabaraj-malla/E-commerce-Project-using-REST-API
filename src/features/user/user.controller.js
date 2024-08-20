@@ -55,7 +55,11 @@ export default class UserController {
               expiresIn: "5h",
             }
           );
-          return res.status(200).send(token);
+          const loginResult = {
+            login: "success",
+            token: token,
+          };
+          return res.status(200).send(loginResult);
         } else {
           return res.status(400).send("Invalid credentials");
         }
