@@ -3,6 +3,7 @@ This is a RESTful API that provides endpoints for managing users, products, cart
 
 ## Features
 ##### User Model
+```bash
 **Signup**: Create a new user account.
 **Signin**: Authenticate users with their credentials.
 **Password Reset**: Allow users to reset their password securely.
