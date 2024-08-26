@@ -31,7 +31,7 @@ This is a RESTful API that provides endpoints for managing users, products, cart
 ## Installation
 + Clone the repository:
   ```bash
-  https://github.com/nabaraj-malla/E-commerce-Project-using-REST-API.git
+  git clone https://github.com/nabaraj-malla/E-commerce-Project-using-REST-API.git
 + Install dependencies:
    ```bash
   npm install
