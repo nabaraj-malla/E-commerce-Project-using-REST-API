@@ -50,5 +50,5 @@ This is a RESTful API that provides endpoints for managing users, products, cart
 [Try out now](https://e-commerce-project-using-rest-api.onrender.com)
 
 > [!NOTE]
-> I have used free instance of render for deployment, which can delay requests by 50 seconds or more.
+> I have used free instance of render (Cloud Application Hosting for Developers) for deployment, which can delay requests by 50 seconds or more.
   
