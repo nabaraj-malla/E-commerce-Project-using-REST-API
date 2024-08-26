@@ -263,3 +263,4 @@
 {"level":"info","message":"Tue Aug 20 2024 11:27:08 GMT+0545 (Nepal Time) \n/api/products/rate - req.body - {\"productID\":\"66c3ff5bae2e208966896249\",\"rating\":8,\"text\":\"long battery life but needed more ports.\"}  \nreq.query - {} ","service":"request-logging"}
 {"level":"info","message":"Tue Aug 20 2024 11:29:28 GMT+0545 (Nepal Time) \n/api/carts/new - req.body - {\"productID\":\"66c3ff5bae2e208966896249\",\"quantity\":2}  \nreq.query - {} ","service":"request-logging"}
 {"level":"info","message":"Tue Aug 20 2024 11:30:30 GMT+0545 (Nepal Time) \n/api/carts/new - req.body - {\"productID\":\"66c3ff5bae2e208966896249\",\"quantity\":2}  \nreq.query - {} ","service":"request-logging"}
+{"level":"info","message":"Mon Aug 26 2024 22:27:45 GMT+0545 (Nepal Time) \n/ - req.body - {}  \nreq.query - {} ","service":"request-logging"}
