@@ -30,10 +30,13 @@ This is a RESTful API that provides endpoints for managing users, products, cart
 
 ## Installation
 + Clone the repository:
+  ```bash
   https://github.com/nabaraj-malla/E-commerce-Project-using-REST-API.git
 + Install dependencies:
+   ```bash
   npm install
 + Set up environment variables: Create a .env file and add the following variables:
+  ```bash
   MONGO_URL = "your mongodb url";
   JWT_SECRET = "your secret key";
   PORT = 9009 || any port no.;
