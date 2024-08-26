@@ -27,3 +27,15 @@ This is a RESTful API that provides endpoints for managing users, products, cart
 - **Authentication**: JSON Web Tokens (JWT)
 - **Version Control**: Git
 - **Other Tools**: Mongoose (for MongoDB), bcrypt (for password hashing), dotenv (for environment variables)
+
+## Installation
++ Clone the repository:
+  https://github.com/nabaraj-malla/E-commerce-Project-using-REST-API.git
++ Install dependencies:
+  npm install
++ Set up environment variables: Create a .env file and add the following variables:
+  MONGO_URL = "your mongodb url";
+  JWT_SECRET = "your secret key";
+  PORT = 9009 || any port no.;
+  APP_BASE_URL = "http://localhost:9009/" put your url where server is running;
+  
