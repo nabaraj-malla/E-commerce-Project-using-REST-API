@@ -41,4 +41,9 @@ This is a RESTful API that provides endpoints for managing users, products, cart
   JWT_SECRET = "your secret key";
   PORT = 9009 || any port no.;
   APP_BASE_URL = "http://localhost:9009/" put your url where server is running;
+
+# Try out Deployed URL
+  [Try out now] (https://e-commerce-project-using-rest-api.onrender.com)
+> [!NOTE]
+> I have used free instance of render for deployment, which can delay requests by 50 seconds or more.
   
