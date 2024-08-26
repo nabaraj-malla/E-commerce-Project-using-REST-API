@@ -41,6 +41,10 @@ This is a RESTful API that provides endpoints for managing users, products, cart
   JWT_SECRET = "your secret key";
   PORT = 9009 || any port no.;
   APP_BASE_URL = "http://localhost:9009/" put your url where server is running;
++ Start a development server
+  ```bash
+  npm start || node app.js
+  
 
 # Try out Deployed URL
 [Try out now](https://e-commerce-project-using-rest-api.onrender.com)
